@@ -410,3 +410,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+// Floating WhatsApp button (site-wide)
+document.write(`
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+    transition: transform 0.2s ease;
+  }
+  .whatsapp-float:hover { transform: scale(1.08); }
+  @media (max-width: 767px) {
+    .whatsapp-float { width: 50px; height: 50px; bottom: 18px; right: 18px; }
+  }
+</style>
+<a href="https://wa.me/447365605601"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="whatsapp-float"
+   aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" width="30" height="30" fill="#ffffff">
+    <path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.42.678 4.68 1.855 6.605L3 29l7.09-2.31A12.42 12.42 0 0 0 16.001 28C22.895 28 28.5 22.393 28.5 15.5S22.895 3 16.001 3zm0 22.7a10.15 10.15 0 0 1-5.176-1.42l-.371-.22-4.21 1.37 1.39-4.1-.24-.42a10.14 10.14 0 0 1-1.594-5.41c0-5.6 4.56-10.16 10.201-10.16 5.64 0 10.2 4.56 10.2 10.16 0 5.6-4.56 10.2-10.2 10.2zm5.59-7.64c-.306-.153-1.81-.893-2.09-.996-.28-.102-.484-.153-.688.154-.204.306-.79.995-.968 1.2-.178.204-.357.23-.663.077-.306-.153-1.293-.477-2.463-1.522-.91-.812-1.524-1.815-1.703-2.121-.178-.306-.019-.472.134-.624.138-.137.306-.357.459-.535.153-.178.204-.306.306-.51.102-.204.05-.383-.026-.536-.077-.153-.688-1.658-.943-2.27-.248-.596-.5-.516-.688-.526-.178-.008-.383-.01-.586-.01-.204 0-.536.077-.816.383-.28.306-1.07 1.046-1.07 2.55 0 1.505 1.096 2.96 1.249 3.164.153.204 2.157 3.293 5.226 4.618.73.315 1.3.503 1.744.644.733.233 1.4.2 1.927.121.588-.088 1.81-.74 2.065-1.454.255-.715.255-1.327.178-1.454-.077-.128-.28-.204-.586-.357z"/>
+  </svg>
+</a>
+`);
