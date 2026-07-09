@@ -188,6 +188,25 @@ document.write(`<!-- Shared site footer — edit once here, loaded on every page
     transition: color 0.2s ease;
   }
 
+    .footer-contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    color: #111111;
+    margin-bottom: 18px;
+    text-decoration: none;
+  }
+
+  .footer-contact-row svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .footer-mail-link:hover {
+    color: #555555;
+  }
+
   .footer-link:hover {
     color: #555555;
   }
@@ -372,10 +391,10 @@ document.write(`<!-- Shared site footer — edit once here, loaded on every page
       <a href="#" class="footer-link">Careers</a>
     </div>
     <div class="footer-links-col">
-      <span class="col-title">Legal</span>
-      <a href="privacy-policy.html" class="footer-link">Privacy policy</a>
-      <a href="#" class="footer-link">Cookie policy</a>
-      <a href="#" class="footer-link">Responsible disclosure</a>
+      <span class="col-title">Contact</span>
+      <div class="footer-contact-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span>UK: 128 City Road, London EC1V 2NX</span></div>
+      <div class="footer-contact-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span>USA: 30 N Gould St. 55446 Sheridan, WY 8280</span></div>
+      <a href="mailto:cs@nemaxai.com" class="footer-contact-row footer-mail-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg><span>cs@nemaxai.com</span></a>
     </div>
   </div>
   <div class="footer-input-wrapper">
