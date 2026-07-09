@@ -14,6 +14,36 @@
     }
 }
 
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 58px;
+  height: 58px;
+  background-color: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+}
+
+@media (max-width: 968px) {
+  .whatsapp-float {
+    bottom: 16px;
+    right: 16px;
+    width: 52px;
+    height: 52px;
+  }
+}
+
 html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -276,7 +306,7 @@ th {
 .navbar .w-icon-dropdown-toggle:before,
 .navbar .w-icon-nav-menu:before {
     content: "" !important;
-    display: inline-block;
+    display: none;
     width: 20px;
     height: 2px;
     background: currentColor;
@@ -7437,7 +7467,7 @@ figcaption {
     background-color: var(--color--white);
     box-shadow: 0 8px 20px 0 var(--color--black-10);
     flex-flow: column;
-    width: 200px;
+    width: 300px;
     padding: .75rem .75rem .5rem;
     display: flex
 }
@@ -10312,4 +10342,35 @@ figcaption {
         background-clip: text;
         -webkit-text-fill-color: transparent;
         color: transparent;
+}
+
+
+
+
+
+
+.sub-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.sub-dropdown .dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sub-dropdown .dropdown-list {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 6px;
+}
+
+@media (max-width: 968px) {
+  .sub-dropdown .dropdown-list {
+    position: static;
+    margin-left: 16px;
+  }
 }
