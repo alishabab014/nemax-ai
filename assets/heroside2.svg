@@ -1,0 +1,160 @@
+<svg width="252" height="189" viewBox="0 0 252 189" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="valueGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#B8FFD8"/>
+      <stop offset="100%" stop-color="#65F0A5"/>
+    </linearGradient>
+
+    <linearGradient id="leadGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#BFD0FF"/>
+      <stop offset="100%" stop-color="#7EA2FF"/>
+    </linearGradient>
+
+    <radialGradient id="glowGreen">
+      <stop offset="0%" stop-color="#65F0A5" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#65F0A5" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="glowBlue">
+      <stop offset="0%" stop-color="#7EA2FF" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#7EA2FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Existing Border -->
+  <rect x="2.5" y="2.5" width="247" height="184" rx="17.5"
+        stroke="white" stroke-opacity="0.10" stroke-width="5"/>
+
+  <foreignObject x="-5" y="-5" width="262" height="199">
+    <div xmlns="http://www.w3.org/1999/xhtml"
+         style="backdrop-filter:blur(5px);clip-path:url(#bgblur_0_70_98_clip_path);height:100%;width:100%">
+    </div>
+  </foreignObject>
+
+  <!-- Divider Lines -->
+  <line x1="84" y1="55" x2="84" y2="150"
+        stroke="white" stroke-opacity="0.08"/>
+
+  <line x1="168" y1="55" x2="168" y2="150"
+        stroke="white" stroke-opacity="0.08"/>
+
+  <!-- Left Glow -->
+  <circle cx="42" cy="55" r="38" fill="url(#glowGreen)"/>
+
+  <!-- Center Glow -->
+  <circle cx="126" cy="55" r="38" fill="url(#glowGreen)"/>
+
+  <!-- Right Glow -->
+  <circle cx="210" cy="55" r="38" fill="url(#glowBlue)"/>
+
+  <!-- ICON CIRCLES -->
+  <circle cx="42" cy="55" r="22"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1"/>
+
+  <circle cx="126" cy="55" r="22"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1"/>
+
+  <circle cx="210" cy="55" r="22"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1"/>
+
+  <!-- PHONE ICON -->
+  <path d="M35 49C35 46.8 36.8 45 39 45H40.8C41.7 45 42.5 45.6 42.8 46.4L44.3 51C44.6 51.9 44.3 52.9 43.5 53.5L41.8 54.8C43.1 57.2 44.8 58.9 47.2 60.2L48.5 58.5C49.1 57.7 50.1 57.4 51 57.7L55.6 59.2C56.4 59.5 57 60.3 57 61.2V63C57 65.2 55.2 67 53 67H51C42.2 67 35 59.8 35 51V49Z"
+        fill="#B8FFD8"/>
+
+  <!-- CHECK ICON -->
+  <path d="M118 56L124 62L135 50"
+        stroke="#B8FFD8"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- PEOPLE ICON -->
+  <path d="M204 61C204 57.7 206.7 55 210 55C213.3 55 216 57.7 216 61M200 64C200 59.6 203.6 56 208 56M220 64C220 59.6 216.4 56 212 56M210 52C208.3 52 207 50.7 207 49C207 47.3 208.3 46 210 46C211.7 46 213 47.3 213 49C213 50.7 211.7 52 210 52Z"
+        stroke="#8FB0FF"
+        stroke-width="2"
+        stroke-linecap="round"/>
+
+  <!-- Labels -->
+  <text x="42" y="95"
+        text-anchor="middle"
+        fill="white"
+        font-family="Inter, 'Google Sans Flex', sans-serif"
+        font-size="9"
+        font-weight="500"
+        opacity="0.85">
+    Call Answer
+  </text>
+
+  <text x="42" y="106"
+        text-anchor="middle"
+        fill="white"
+        font-family="Inter, 'Google Sans Flex', sans-serif"
+        font-size="9"
+        font-weight="500"
+        opacity="0.85">
+    Rate
+  </text>
+
+  <text x="126" y="95"
+        text-anchor="middle"
+        fill="white"
+        font-family="Inter, 'Google Sans Flex', sans-serif"
+        font-size="9"
+        font-weight="500"
+        opacity="0.85">
+    Resolution
+  </text>
+
+  <text x="126" y="106"
+        text-anchor="middle"
+        fill="white"
+        font-family="Inter, 'Google Sans Flex', sans-serif"
+        font-size="9"
+        font-weight="500"
+        opacity="0.85">
+    Rate
+  </text>
+
+  <text x="210" y="101"
+        text-anchor="middle"
+        fill="white"
+        font-family="Inter, 'Google Sans Flex', sans-serif"
+        font-size="9"
+        font-weight="500"
+        opacity="0.85">
+    New Leads
+  </text>
+
+  <!-- Values -->
+  <text x="42" y="145"
+        text-anchor="middle"
+        fill="url(#valueGradient)"
+        font-family="Inter, 'Google Sans Flex', sans-serif"
+        font-size="18"
+        font-weight="700">
+    100%
+  </text>
+
+  <text x="126" y="145"
+        text-anchor="middle"
+        fill="url(#valueGradient)"
+        font-family="Inter, 'Google Sans Flex', sans-serif"
+        font-size="18"
+        font-weight="700">
+    100%
+  </text>
+
+  <text x="210" y="145"
+        text-anchor="middle"
+        fill="url(#leadGradient)"
+        font-family="Inter, 'Google Sans Flex', sans-serif"
+        font-size="18"
+        font-weight="700">
+    37
+  </text>
+
+</svg>

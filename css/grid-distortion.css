@@ -1,0 +1,20 @@
+.grid-distortion-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: auto;
+  z-index: 0;
+}
+
+.grid-distortion-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Keep existing hero assets above the distortion layer */
+.hero-image-item > img {
+  position: relative;
+  z-index: 1;
+}
