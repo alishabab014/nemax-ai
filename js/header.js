@@ -1,4 +1,6 @@
-<!-- Shared site header — edit once here, loaded on every page by js/include.js -->
+// Shared site header - EDIT THE HTML BETWEEN THE BACKTICKS BELOW.
+// This file is loaded by every page; changes here appear site-wide.
+document.write(`<!-- Shared site header — edit once here, loaded on every page by js/include.js -->
 <style>
   .navbar .dropdown-icon svg {
     display: block;
@@ -283,3 +285,4 @@
     </div>
   </div>
 </div>
+`);

@@ -1,4 +1,6 @@
-<!-- Shared site footer — edit once here, loaded on every page by js/include.js -->
+// Shared site footer - EDIT THE HTML BETWEEN THE BACKTICKS BELOW.
+// This file is loaded by every page; changes here appear site-wide.
+document.write(`<!-- Shared site footer — edit once here, loaded on every page by js/include.js -->
 <style>
   .footer-bottom-bar {
     max-width: 1300px;
@@ -394,3 +396,17 @@
     <a href="#" class="footer-bottom-link">Terms & Conditions</a>
   </div>
 </footer>
+`);
+
+// Highlight the current page in the nav
+document.addEventListener("DOMContentLoaded", function () {
+  var page = window.location.pathname.split("/").pop() || "index.html";
+  var links = document.querySelectorAll(".nav-link[href], .dropdown-link[href]");
+  for (var i = 0; i < links.length; i += 1) {
+    var href = (links[i].getAttribute("href") || "").split("#")[0];
+    if (href === page) {
+      links[i].classList.add("w--current");
+      links[i].setAttribute("aria-current", "page");
+    }
+  }
+});
