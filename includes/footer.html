@@ -1,5 +1,35 @@
 <!-- Shared site footer — edit once here, loaded on every page by js/include.js -->
 <style>
+  .footer-bottom-bar {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .footer-bottom-bar .footer-bottom-link,
+  .footer-bottom-bar .footer-copyright {
+    font-size: 13px;
+    color: #8c8c8c;
+    text-decoration: none;
+  }
+
+  .footer-bottom-bar .footer-bottom-link:hover {
+    color: #555555;
+  }
+
+  @media (max-width: 968px) {
+    .footer-bottom-bar {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+      padding: 20px;
+    }
+  }
+
   .site-footer {
     position: relative;
     width: 100%;
@@ -311,8 +341,8 @@
 </style>
 <footer class="site-footer">
   <div class="footer-cta">
-    <img src="../assets/hand-top-left.webp" alt="Hand Top Left" class="hand-img hand-left">
-    <img src="../assets/hand-bottom-right.webp" alt="Hand Bottom Right" class="hand-img hand-right">
+    <img src="assets/hand-top-left.webp" alt="Hand Top Left" class="hand-img hand-left">
+    <img src="assets/hand-bottom-right.webp" alt="Hand Bottom Right" class="hand-img hand-right">
     <h2 class="no-margin-bottom gradient-revenue">Speed is your only edge</h2>
     <a href="https://calendly.com/nemaxaiofficial/30min" class="cta-btn footer-cta-btn">Let's talk</a>
   </div>
@@ -357,5 +387,10 @@
         </svg>
       </button>
     </div>
+  </div>
+  <div class="footer-bottom-bar">
+    <a href="privacy-policy.html" class="footer-bottom-link">Privacy Policy</a>
+    <span class="footer-copyright">Copyright@Boost Agency Ltd</span>
+    <a href="#" class="footer-bottom-link">Terms & Conditions</a>
   </div>
 </footer>
