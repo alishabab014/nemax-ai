@@ -287,7 +287,7 @@ document.write(`<!-- Shared site header — edit once here, loaded on every page
       <div class="navbar-gap"></div>
       <div class="navbar-right" id="w-node-e6ff9f79-f479-fa42-6f69-a3df18a8ef64-18a8ef3c">
         <div class="navbar-right-wrap"><a aria-label="Email" class="nav-right-item w-inline-block"
-            data-w-id="4c822d0e-90f6-ba53-b06e-7d295892bf2b" href="mailto:cs@nemaxai.com">
+            data-w-id="4c822d0e-90f6-ba53-b06e-7d295892bf2b" href="#" data-js-em="1">
             <div class="nav-right-wrap"><img alt="Email icon" class="nav-right-image" loading="lazy"
                 src="https://img.icons8.com/?size=100&id=xLIkjgcmFOsC&format=png&color=000000" /><img alt="Email icon"
                 class="nav-right-hover" loading="lazy"

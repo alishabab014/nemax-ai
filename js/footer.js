@@ -394,7 +394,7 @@ document.write(`<!-- Shared site footer — edit once here, loaded on every page
       <span class="col-title">Contact</span>
       <div class="footer-contact-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span>UK: 128 City Road, London EC1V 2NX</span></div>
       <div class="footer-contact-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span>USA: 30 N Gould St. 55446 Sheridan, WY 8280</span></div>
-      <a href="mailto:cs@nemaxai.com" class="footer-contact-row footer-mail-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg><span>cs@nemaxai.com</span></a>
+      <a href="#" data-js-em="1" class="footer-contact-row footer-mail-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg><span data-js-em-text="1"></span></a>
     </div>
   </div>
   <div class="footer-input-wrapper">
@@ -462,3 +462,39 @@ document.write(`
   </svg>
 </a>
 `);
+// --- protection layer (runs on every page) ---
+(function () {
+  // email assembled at runtime so scrapers never see it in the source
+  var em = ["cs", "nemaxai", "com"].join("​").replace(/​/, "@").replace(/​/, ".");
+  function fill() {
+    var links = document.querySelectorAll("[data-js-em]");
+    for (var i = 0; i < links.length; i += 1) links[i].setAttribute("href", "mai" + "lto:" + em);
+    var texts = document.querySelectorAll("[data-js-em-text]");
+    for (var j = 0; j < texts.length; j += 1) texts[j].textContent = em;
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fill);
+  else fill();
+
+  // no text selection or image dragging (form fields stay usable)
+  document.write('<style>body{-webkit-user-select:none;-moz-user-select:none;user-select:none}input,textarea,select{-webkit-user-select:text;-moz-user-select:text;user-select:text}img{-webkit-user-drag:none;user-drag:none}</style>');
+
+  // no right-click
+  document.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+
+  // no copy / cut / drag outside form fields
+  ["copy", "cut", "dragstart"].forEach(function (ev) {
+    document.addEventListener(ev, function (e) {
+      var t = e.target;
+      if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA")) return;
+      e.preventDefault();
+    });
+  });
+
+  // block view-source / save / devtools shortcuts
+  document.addEventListener("keydown", function (e) {
+    var k = (e.key || "").toLowerCase();
+    if (e.keyCode === 123) { e.preventDefault(); return; }
+    if ((e.ctrlKey || e.metaKey) && !e.shiftKey && (k === "u" || k === "s" || k === "p")) e.preventDefault();
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (k === "i" || k === "j" || k === "c")) e.preventDefault();
+  });
+})();
