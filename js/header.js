@@ -34,6 +34,30 @@ document.write(`<!-- Shared site header — edit once here, loaded on every page
   }
 
   @media (max-width: 991px) {
+    /* template CSS hides dropdown labels in the mobile menu - restore them */
+    .navbar .dropdown-toggle.nav-link > div:last-child {
+      display: inline-flex !important;
+      align-items: center;
+    }
+
+    .nav-list > .dropdown > .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .nav-list > .dropdown > .dropdown-toggle > .dropdown-icon {
+      position: static;
+      margin: 0;
+      order: 2;
+    }
+
+    .nav-list .w-dropdown-list.w--open {
+      position: static;
+      width: 100%;
+    }
     .sub-dropdown>.w-dropdown-list {
       position: static;
     }
