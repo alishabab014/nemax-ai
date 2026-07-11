@@ -47,289 +47,401 @@
 <body>
   <script src="js/header.js" type="text/javascript"></script>
   <section class="pricing-section">
-    <style>
-      .np-wrap { max-width: 1200px; margin: 0 auto; padding: 140px 20px 60px; }
-      .np-head { text-align: center; margin-bottom: 36px; }
-      .np-badge { display: inline-block; font-size: 13px; font-weight: 500; letter-spacing: .04em; padding: 6px 16px; border-radius: 100px; background: #f1f3f8; color: #293559; margin-bottom: 18px; }
-      .np-title { font-size: clamp(32px, 5vw, 52px); line-height: 1.1; color: #111; margin: 0 0 14px; }
-      .np-sub { color: #6b7280; font-size: 16px; max-width: 520px; margin: 0 auto; }
-
-      .np-toggle { display: flex; align-items: center; justify-content: center; gap: 0; margin: 28px auto 44px; width: max-content; background: #f1f3f8; border-radius: 100px; padding: 5px; }
-      .np-toggle button { border: none; cursor: pointer; background: transparent; color: #6b7280; font-size: 14px; font-weight: 500; padding: 9px 22px; border-radius: 100px; transition: all .2s; }
-      .np-toggle button.np-on { background: linear-gradient(77deg, #899fca, #293559); color: #fff; box-shadow: 0 6px 14px rgba(41,53,89,.3); }
-      .np-save { font-size: 12px; background: #e8f7ee; color: #16a34a; border-radius: 100px; padding: 3px 10px; margin-left: 6px; font-weight: 600; }
-      .np-toggle button.np-on .np-save { background: rgba(255,255,255,.2); color: #fff; }
-
-      .np-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
-      .np-card { position: relative; display: flex; flex-direction: column; background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: 24px; padding: 30px 26px; transition: transform .25s ease, box-shadow .25s ease; }
-      .np-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(17,24,39,.10); }
-      .np-card.np-dark { background: linear-gradient(160deg, #1d2740, #293559 55%, #33436e); color: #fff; border: none; box-shadow: 0 24px 54px rgba(41,53,89,.35); }
-      .np-card.np-dark:hover { box-shadow: 0 30px 60px rgba(41,53,89,.45); }
-      .np-pop { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: linear-gradient(77deg, #f6b26b, #e2803a); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .08em; padding: 6px 16px; border-radius: 100px; white-space: nowrap; }
-      .np-kicker { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; color: #8a93a8; margin-bottom: 6px; }
-      .np-dark .np-kicker { color: #aeb9d6; }
-      .np-plan { font-size: 26px; font-weight: 600; margin: 0 0 10px; color: inherit; }
-      .np-desc { font-size: 14px; line-height: 1.55; color: #6b7280; margin: 0 0 22px; min-height: 66px; }
-      .np-dark .np-desc { color: #c4cde4; }
-      .np-price-row { display: flex; align-items: baseline; gap: 4px; }
-      .np-cur { font-size: 22px; font-weight: 600; }
-      .np-price { font-size: 48px; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
-      .np-per { font-size: 15px; color: #6b7280; }
-      .np-dark .np-per { color: #aeb9d6; }
-      .np-bill { font-size: 13px; color: #6b7280; margin-top: 8px; }
-      .np-dark .np-bill { color: #aeb9d6; }
-      .np-setup { font-size: 13px; margin-top: 4px; color: #6b7280; }
-      .np-dark .np-setup { color: #aeb9d6; }
-
-      .np-inc { margin: 22px 0 20px; border: 1px dashed rgba(0,0,0,.14); border-radius: 14px; padding: 14px 16px; }
-      .np-dark .np-inc { border-color: rgba(255,255,255,.22); }
-      .np-inc-title { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: #8a93a8; margin-bottom: 8px; }
-      .np-dark .np-inc-title { color: #aeb9d6; }
-      .np-inc div { font-size: 13.5px; line-height: 1.8; }
-
-      .np-list { list-style: none; padding: 0; margin: 0 0 22px; flex-grow: 1; }
-      .np-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.45; padding: 5.5px 0; }
-      .np-ic { flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-top: 1px; font-size: 11px; font-weight: 700; }
-      .np-ic.y { background: #e8f7ee; color: #16a34a; }
-      .np-dark .np-ic.y { background: rgba(94, 222, 146, .18); color: #7fe3a4; }
-      .np-ic.n { background: #f1f2f5; color: #9aa1af; }
-      .np-dark .np-ic.n { background: rgba(255,255,255,.10); color: #8e99b5; }
-      .np-list li.np-off { color: #9aa1af; }
-      .np-dark .np-list li.np-off { color: #8e99b5; }
-
-      .np-for { font-size: 13px; color: #6b7280; margin-bottom: 18px; }
-      .np-dark .np-for { color: #c4cde4; }
-      .np-roi { font-size: 13px; font-weight: 600; color: #7fe3a4; margin-bottom: 18px; }
-
-      .np-cta { display: block; text-align: center; text-decoration: none; font-size: 15px; font-weight: 600; padding: 14px 20px; border-radius: 100px; transition: opacity .2s, transform .2s; }
-      .np-cta:hover { opacity: .88; transform: scale(1.02); }
-      .np-cta.solid { background: linear-gradient(77deg, #899fca, #293559); color: #fff; }
-      .np-cta.light { background: #fff; color: #293559; }
-      .np-cta.ghost { background: #111; color: #fff; }
-
-      /* ------- comparison table ------- */
-      .np-cmp { max-width: 1200px; margin: 30px auto 0; padding: 30px 20px 10px; }
-      .np-cmp-head { text-align: center; margin-bottom: 30px; }
-      .np-cmp-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid rgba(0,0,0,.08); border-radius: 20px; background: #fff; }
-      table.np-table { width: 100%; border-collapse: collapse; min-width: 760px; font-size: 14px; }
-      .np-table thead th { position: sticky; top: 0; background: #fff; z-index: 2; text-align: center; padding: 18px 14px 14px; border-bottom: 2px solid rgba(0,0,0,.08); }
-      .np-table thead th:first-child { text-align: left; }
-      .np-th-plan { font-size: 16px; font-weight: 700; color: #111; }
-      .np-th-price { display: block; font-size: 13px; font-weight: 500; color: #6b7280; margin-top: 2px; }
-      .np-table thead th.np-hl { background: #f3f6fc; border-radius: 14px 14px 0 0; }
-      .np-table td { padding: 11px 14px; text-align: center; border-bottom: 1px solid rgba(0,0,0,.05); color: #374151; }
-      .np-table td:first-child { text-align: left; color: #111; }
-      .np-table td.np-hl { background: #f3f6fc; font-weight: 500; }
-      .np-table tr:last-child td { border-bottom: none; }
-      .np-table tr.np-cat td { background: #fafbfd; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; font-weight: 700; color: #293559; padding: 13px 14px 9px; border-bottom: 1px solid rgba(0,0,0,.06); }
-      .np-table tr.np-cat td.np-hl { background: #eef2fa; }
-      .np-table tbody tr:not(.np-cat):hover td { background: #f8fafc; }
-      .np-table tbody tr:not(.np-cat):hover td.np-hl { background: #edf2fb; }
-      .np-yes, .np-no { display: inline-flex; width: 20px; height: 20px; border-radius: 50%; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
-      .np-yes { background: #e8f7ee; color: #16a34a; }
-      .np-no { background: #f1f2f5; color: #b0b6c1; }
-      .np-cmp-note { text-align: center; font-size: 13px; color: #6b7280; margin: 18px 0 0; }
-
-      @media (max-width: 991px) {
-        .np-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
-        .np-card.np-dark { order: -1; }
-        .np-desc { min-height: 0; }
-        .np-wrap { padding-top: 120px; }
-      }
-    </style>
-
-    <div class="np-wrap">
-    <div class="pricing-section-title">
-        <div data-w-id="b100e8e5-e0ca-67c5-8d7c-28c5c7e8c698" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
-          <div class="pre-title" data-w-id="cba91b64-41d6-4d41-63f9-561fc672f3d9" data-wf--badge--variant="bg-badge" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+    <div class="container">
+      <div class="pricing-section-title">
+        <div data-w-id="b100e8e5-e0ca-67c5-8d7c-28c5c7e8c698" style="opacity:0">
+          <div class="pre-title" data-w-id="cba91b64-41d6-4d41-63f9-561fc672f3d9" data-wf--badge--variant="bg-badge">
             Pricing Plans</div>
         </div>
-        <h1 class="pricing-titles gradient-multilingual" data-w-id="d1548444-fa28-5e26-318d-0a0706f8cd8c" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">Plans built for
+        <h1 class="pricing-titles gradient-multilingual" data-w-id="d1548444-fa28-5e26-318d-0a0706f8cd8c" style="opacity:0">Plans built for
           omnichannel scale</h1>
       </div>
-
-      <div class="np-toggle" role="tablist" aria-label="Billing period">
-        <button type="button" class="np-on" data-bill="monthly">Monthly</button>
-        <button type="button" data-bill="annual">Annual <span class="np-save">save 20%</span></button>
+      <div class="pricing-toggle" data-w-id="d564fe67-e4af-f366-b2b7-5e2f32c5c46c" style="opacity:0">
+        <div>Monthly retainer</div>
+        <div class="toggle" data-w-id="d564fe67-e4af-f366-b2b7-5e2f32c5c46f">
+          <div class="toggle-circle"
+            style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)">
+          </div>
+        </div>
+        <div>Annual</div>
       </div>
-
-      <div class="np-grid">
-        <!-- Accelerator -->
-        <div class="np-card">
-          <div class="np-kicker">Starter</div>
-          <h2 class="np-plan">Accelerator</h2>
-          <p class="np-desc">Voice and SMS. The fastest way to stop missing calls. No frills, no long setup — just Arya answering your phones.</p>
-          <div class="np-price-row"><span class="np-cur">$</span><span class="np-price" data-monthly="149" data-annual="119">149</span><span class="np-per">/mo</span></div>
-          <div class="np-bill" data-monthly="Billed monthly — or $119/mo billed annually" data-annual="Billed annually — $119/mo (save 20%)">Billed monthly — or $119/mo billed annually</div>
-          <div class="np-setup">One-time setup: $149</div>
-          <div class="np-inc">
-            <div class="np-inc-title">What's included</div>
-            <div>300 voice minutes/month<br>Unlimited SMS<br>Website chatbot<br>Overage: $0.15/min after 300</div>
+      <div class="w-layout-grid grid-pricing">
+        <div class="pricing-item">
+          <div class="pricing-title one">Accelerator</div>
+          <div class="pricing-amount">
+            <div class="pricing-yearly" style="display:flex">
+              <h2 class="yearly-price">$119</h2>
+              <div class="pricing-month-text">/mo · billed annually</div>
+            </div>
+            <div class="pricing-monthly" style="opacity:1;display:none">
+              <h2 class="monthly-price">$149</h2>
+              <div class="pricing-month-text">/per month</div>
+            </div>
           </div>
-          <ul class="np-list">
-            <li><span class="np-ic y">✓</span>24/7 AI voice receptionist</li>
-            <li><span class="np-ic y">✓</span>Bookings and appointments</li>
-            <li><span class="np-ic y">✓</span>Hours, FAQs, and pricing</li>
-            <li><span class="np-ic y">✓</span>Website chatbot (iframe + bubble)</li>
-            <li><span class="np-ic y">✓</span>SMS booking confirmations</li>
-            <li><span class="np-ic y">✓</span>Basic call log dashboard</li>
-            <li class="np-off"><span class="np-ic n">–</span>WhatsApp / Instagram / Email</li>
-            <li class="np-off"><span class="np-ic n">–</span>CRM integration</li>
-            <li class="np-off"><span class="np-ic n">–</span>Human escalation layer</li>
-          </ul>
-          <div class="np-for"><strong>For:</strong> Solo shops, salons, small service businesses</div>
-          <a href="contact.html" class="np-cta ghost">Book a free call →</a>
-        </div>
-
-        <!-- Signature -->
-        <div class="np-card np-dark">
-          <div class="np-pop">MOST POPULAR</div>
-          <div class="np-kicker">Core product</div>
-          <h2 class="np-plan">Signature</h2>
-          <p class="np-desc">The complete system. Every channel your customers use — handled automatically, around the clock.</p>
-          <div class="np-price-row"><span class="np-cur">$</span><span class="np-price" data-monthly="599" data-annual="479">599</span><span class="np-per">/mo</span></div>
-          <div class="np-bill" data-monthly="Billed monthly — or $479/mo billed annually" data-annual="Billed annually — $479/mo (save 20%)">Billed monthly — or $479/mo billed annually</div>
-          <div class="np-setup">Setup fee: included free</div>
-          <div class="np-inc">
-            <div class="np-inc-title">What's included</div>
-            <div>600 voice minutes/month<br>Unlimited conversations (all channels)<br>WhatsApp · Instagram · Facebook · Email<br>Overage: $0.12/min after 600</div>
+          <p class="pricing-description">Voice and SMS. The fastest way to stop missing calls. No frills, no long setup — just Arya answering your phones.</p>
+          <div class="pricing-divider"></div>
+          <div class="pricing-list">
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">24/7 AI voice receptionist</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">300 voice minutes/month</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Unlimited SMS + booking confirmations</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Website chatbot (iframe + bubble)</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Bookings and appointments</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Hours, FAQs, and pricing</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Basic call log dashboard</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">One-time setup: $149 · Overage $0.15/min</div>
+            </div>
+          </div><a class="button-black w-inline-block" data-w-id="043f7d07-2174-a763-34b4-123a1db8a825"
+            data-wf--button-black--variant="button-black" href="contact.html">
+            <div class="button-text-wrap">
+              <div class="button-text one">Book a free call</div>
+              <div class="button-text two">Book a free call</div>
+            </div>
+          </a>
+        </div>        <div class="pricing-item">
+          <div class="pricing-title two">Signature — Most Popular</div>
+          <div class="pricing-amount">
+            <div class="pricing-yearly" style="display:flex">
+              <h2 class="yearly-price">$479</h2>
+              <div class="pricing-month-text">/mo · billed annually</div>
+            </div>
+            <div class="pricing-monthly" style="opacity:1;display:none">
+              <h2 class="monthly-price">$599</h2>
+              <div class="pricing-month-text">/per month</div>
+            </div>
           </div>
-          <ul class="np-list">
-            <li><span class="np-ic y">✓</span>Everything in Accelerator</li>
-            <li><span class="np-ic y">✓</span>WhatsApp AI auto-replies</li>
-            <li><span class="np-ic y">✓</span>Instagram DM handling</li>
-            <li><span class="np-ic y">✓</span>Facebook Messenger</li>
-            <li><span class="np-ic y">✓</span>Email management + AI drafts</li>
-            <li><span class="np-ic y">✓</span>Human escalation with briefing</li>
-            <li><span class="np-ic y">✓</span>CRM sync (HubSpot, GHL, Zoho)</li>
-            <li><span class="np-ic y">✓</span>Full unified dashboard</li>
-            <li><span class="np-ic y">✓</span>Weekly performance report</li>
-          </ul>
-          <div class="np-roi">Most clients recover this in the first week</div>
-          <a href="contact.html" class="np-cta light">Book a free call →</a>
-        </div>
-
-        <!-- Enterprise -->
-        <div class="np-card">
-          <div class="np-kicker">Scale</div>
-          <h2 class="np-plan">Enterprise</h2>
-          <p class="np-desc">Multi-location, high volume, custom integrations. Built around your business, not a template.</p>
-          <div class="np-price-row"><span class="np-price">Custom</span></div>
-          <div class="np-bill">From $1,499/month · Annual commitment</div>
-          <div class="np-setup">Priority onboarding · Dedicated AM</div>
-          <div class="np-inc">
-            <div class="np-inc-title">What's included</div>
-            <div>Custom voice minute pool<br>Unlimited everything<br>SLA with guaranteed uptime<br>No overage charges</div>
+          <p class="pricing-description">The complete system. Every channel your customers use — handled automatically, around the clock.</p>
+          <div class="pricing-divider"></div>
+          <div class="pricing-list">
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Everything in Accelerator</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">600 voice minutes/month</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">WhatsApp · Instagram · Facebook · Email</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Unlimited conversations (all channels)</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Human escalation with briefing</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">CRM sync (HubSpot, GHL, Zoho)</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Full unified dashboard + weekly report</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Setup fee included free · Overage $0.12/min</div>
+            </div>
+          </div><a class="button-black w-inline-block" data-w-id="043f7d07-2174-a763-34b4-123a1db8a825"
+            data-wf--button-black--variant="button-black" href="contact.html">
+            <div class="button-text-wrap">
+              <div class="button-text one">Book a free call</div>
+              <div class="button-text two">Book a free call</div>
+            </div>
+          </a>
+        </div>        <div class="pricing-item">
+          <div class="pricing-title three">Enterprise</div>
+          <div class="pricing-amount">
+            <div class="pricing-yearly" style="display:flex">
+              <h2 class="yearly-price">Custom</h2>
+              <div class="pricing-month-text">/from $1,499 per month</div>
+            </div>
+            <div class="pricing-monthly" style="opacity:1;display:none">
+              <h2 class="monthly-price">Custom</h2>
+              <div class="pricing-month-text">/from $1,499 per month</div>
+            </div>
           </div>
-          <ul class="np-list">
-            <li><span class="np-ic y">✓</span>Everything in Signature</li>
-            <li><span class="np-ic y">✓</span>Multi-location deployment</li>
-            <li><span class="np-ic y">✓</span>Bilingual (5 languages)</li>
-            <li><span class="np-ic y">✓</span>Custom CRM / POS / EHR integration</li>
-            <li><span class="np-ic y">✓</span>Dedicated account manager</li>
-            <li><span class="np-ic y">✓</span>4-hour response SLA</li>
-            <li><span class="np-ic y">✓</span>Outbound follow-up campaigns</li>
-            <li><span class="np-ic y">✓</span>White-label option</li>
-            <li><span class="np-ic y">✓</span>Custom branded agent voice</li>
-          </ul>
-          <div class="np-for"><strong>For:</strong> Franchises, clinics, multi-location businesses</div>
-          <a href="contact.html" class="np-cta solid">Talk to us →</a>
-        </div>
-      </div>
+          <p class="pricing-description">Multi-location, high volume, custom integrations. Built around your business, not a template.</p>
+          <div class="pricing-divider"></div>
+          <div class="pricing-list">
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Everything in Signature</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Custom voice minute pool — no overage</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Multi-location deployment</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Multilingual (5 languages)</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Custom CRM / POS / EHR integration</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Dedicated account manager · 4-hour SLA</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">Outbound follow-up campaigns</div>
+            </div>
+            <div class="pricing-list-item"><img alt="Included" class="pricing-list-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693ba8ba87a542ec3e7e2122_icon-45.svg" />
+              <div class="pricing-text">White-label + custom branded agent voice</div>
+            </div>
+          </div><a class="button-black w-inline-block" data-w-id="043f7d07-2174-a763-34b4-123a1db8a825"
+            data-wf--button-black--variant="button-black" href="contact.html">
+            <div class="button-text-wrap">
+              <div class="button-text one">Talk to us</div>
+              <div class="button-text two">Talk to us</div>
+            </div>
+          </a>
+        </div>      </div>
     </div>
-
-    <!-- Feature comparison -->
-    <div class="np-cmp">
-      <div class="np-cmp-head">
-        <div class="np-badge">Compare Plans</div>
-        <h2 class="np-title" style="font-size: clamp(26px, 4vw, 40px);">Every feature, side by side</h2>
-        <p class="np-sub">See exactly what each plan unlocks — no fine print, no surprises.</p>
-      </div>
-      <div class="np-cmp-scroll">
-        <table class="np-table">
-          <thead>
-            <tr>
-              <th style="min-width:230px">Feature</th>
-              <th><span class="np-th-plan">Accelerator</span><span class="np-th-price">$149/mo</span></th>
-              <th class="np-hl"><span class="np-th-plan">Signature</span><span class="np-th-price">$599/mo</span></th>
-              <th><span class="np-th-plan">Enterprise</span><span class="np-th-price">Custom</span></th>
-            </tr>
-          </thead>
-          <tbody id="np-tbody"></tbody>
-        </table>
-      </div>
-      <p class="np-cmp-note">Still deciding? <a href="contact.html" style="color:#293559;font-weight:600">Book a free call</a> and hear Arya handle a live conversation for your business.</p>
-    </div>
-
-    <script>
-      (function () {
-        // billing toggle
-        var buttons = document.querySelectorAll(".np-toggle button");
-        buttons.forEach(function (btn) {
-          btn.addEventListener("click", function () {
-            buttons.forEach(function (b) { b.classList.remove("np-on"); });
-            btn.classList.add("np-on");
-            var mode = btn.getAttribute("data-bill");
-            document.querySelectorAll(".np-price[data-monthly], .np-bill[data-monthly]").forEach(function (el) {
-              el.textContent = el.getAttribute("data-" + mode);
-            });
-          });
-        });
-
-        // comparison table rows
-        var Y = '<span class="np-yes">✓</span>', N = '<span class="np-no">✗</span>';
-        var rows = [
-          ["cat", "Voice & Calling"],
-          ["24/7 AI voice receptionist", Y, Y, Y],
-          ["Included voice minutes/month", "300 mins", "600 mins", "Custom"],
-          ["Overage rate per minute", "$0.15/min", "$0.12/min", "Included"],
-          ["Simultaneous calls", "10 calls", "50 calls", "Unlimited"],
-          ["Answers in under 2 seconds", Y, Y, Y],
-          ["Call recording and transcript", Y, Y, Y],
-          ["Smart human escalation with briefing", N, Y, Y],
-          ["Outbound follow-up calls", N, N, Y],
-          ["cat", "Messaging Channels"],
-          ["Website chatbot (iframe + bubble)", Y, Y, Y],
-          ["SMS", Y, Y, Y],
-          ["WhatsApp (auto-replies)", N, Y, Y],
-          ["Instagram DMs", N, Y, Y],
-          ["Facebook Messenger", N, Y, Y],
-          ["Email management + AI drafts", N, Y, Y],
-          ["Conversations per month", "500 limit", "Unlimited", "Unlimited"],
-          ["cat", "AI Capabilities"],
-          ["Trained on your business", Y, Y, Y],
-          ["Bookings and appointment scheduling", Y, Y, Y],
-          ["Handles FAQs, hours, pricing", Y, Y, Y],
-          ["Multilingual (5 languages)", N, "Add-on", Y],
-          ["Complaint handling + de-escalation", N, Y, Y],
-          ["Custom persona and branded voice", N, N, Y],
-          ["cat", "Integrations & Data"],
-          ["Unified inbox dashboard", "Basic", Y, Y],
-          ["Google Sheets / Calendar sync", Y, Y, Y],
-          ["CRM sync (HubSpot, GHL, Zoho)", N, Y, Y],
-          ["Custom API / POS / EHR integration", N, N, Y],
-          ["Weekly performance report", N, Y, Y],
-          ["cat", "Support & Service"],
-          ["Setup time", "48 hours", "48 hours", "Priority"],
-          ["Knowledge base updates", "2/month", "Unlimited", "Unlimited"],
-          ["Monthly optimisation call", N, Y, "Weekly"],
-          ["Dedicated account manager", N, N, Y],
-          ["Support response time", "24 hours", "12 hours", "4 hours SLA"],
-          ["Contract", "Monthly", "Monthly", "Annual"]
-        ];
-        var html = "";
-        rows.forEach(function (r) {
-          if (r[0] === "cat") {
-            html += '<tr class="np-cat"><td>' + r[1] + '</td><td></td><td class="np-hl"></td><td></td></tr>';
-          } else {
-            html += "<tr><td>" + r[0] + "</td><td>" + r[1] + '</td><td class="np-hl">' + r[2] + "</td><td>" + r[3] + "</td></tr>";
-          }
-        });
-        document.getElementById("np-tbody").innerHTML = html;
-      })();
-    </script>
   </section>
-
+  <section class="compare-plan-section section-spacing">
+    <div class="container">
+      <div class="w-layout-grid grid-compare-plan">
+        <div class="compare-plan-feature-list">
+          <h3 class="pricing-info-title">Features</h3>
+        </div>
+        <div class="text-center">
+          <h4 class="pricing-info-title">Accelerator</h4>
+          <h5 class="pricing-count">$149/mo</h5>
+        </div>
+        <div class="text-center">
+          <h5 class="pricing-info-title">Signature</h5>
+          <h6 class="pricing-count">$599/mo</h6>
+        </div>
+        <div class="text-center">
+          <h5 class="pricing-info-title">Enterprise</h5>
+          <h6 class="pricing-count">Custom</h6>
+        </div>
+      </div>
+      <div class="pricing-compare-wrap">
+        <div class="w-layout-grid grid-pricing-item-one" style="margin-top:14px">
+          <div class="pricing-compare-text"><strong>Voice &amp; Calling</strong></div>
+          <div class="text-center"></div><div class="text-center"></div><div class="text-center"></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">24/7 AI voice receptionist</div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">Included voice minutes/month</div>
+          <div class="text-center">300 mins</div>
+          <div class="text-center">600 mins</div>
+          <div class="text-center">Custom</div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">Overage rate per minute</div>
+          <div class="text-center">$0.15/min</div>
+          <div class="text-center">$0.12/min</div>
+          <div class="text-center">Included</div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">Simultaneous calls</div>
+          <div class="text-center">10 calls</div>
+          <div class="text-center">50 calls</div>
+          <div class="text-center">Unlimited</div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">Answers in under 2 seconds</div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">Call recording and transcript</div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">Smart human escalation with briefing</div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">Outbound follow-up calls</div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one" style="margin-top:14px">
+          <div class="pricing-compare-text"><strong>Messaging Channels</strong></div>
+          <div class="text-center"></div><div class="text-center"></div><div class="text-center"></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">Website chatbot (iframe + bubble)</div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">SMS</div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">WhatsApp (auto-replies)</div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">Instagram DMs</div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">Facebook Messenger</div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">Email management + AI drafts</div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">Conversations per month</div>
+          <div class="text-center">500 limit</div>
+          <div class="text-center">Unlimited</div>
+          <div class="text-center">Unlimited</div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one" style="margin-top:14px">
+          <div class="pricing-compare-text"><strong>AI Capabilities</strong></div>
+          <div class="text-center"></div><div class="text-center"></div><div class="text-center"></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">Trained on your business</div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">Bookings and appointment scheduling</div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">Handles FAQs, hours, pricing</div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">Multilingual (5 languages)</div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center">Add-on</div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">Complaint handling + de-escalation</div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">Custom persona and branded voice</div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one" style="margin-top:14px">
+          <div class="pricing-compare-text"><strong>Integrations &amp; Data</strong></div>
+          <div class="text-center"></div><div class="text-center"></div><div class="text-center"></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">Unified inbox dashboard</div>
+          <div class="text-center">Basic</div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">Google Sheets / Calendar sync</div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">CRM sync (HubSpot, GHL, Zoho)</div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">Custom API / POS / EHR integration</div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">Weekly performance report</div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one" style="margin-top:14px">
+          <div class="pricing-compare-text"><strong>Support &amp; Service</strong></div>
+          <div class="text-center"></div><div class="text-center"></div><div class="text-center"></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">Setup time</div>
+          <div class="text-center">48 hours</div>
+          <div class="text-center">48 hours</div>
+          <div class="text-center">Priority</div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">Knowledge base updates</div>
+          <div class="text-center">2/month</div>
+          <div class="text-center">Unlimited</div>
+          <div class="text-center">Unlimited</div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">Monthly optimisation call</div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+          <div class="text-center">Weekly</div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">Dedicated account manager</div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Not included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/69465448cf448a0fd13954a8_0934ea06d662444642b8bd7f3165d4ef_icon-65.svg" /></div>
+          <div class="text-center"><img alt="Included" class="pricing-compare-icon" loading="lazy" src="https://cdn.prod.website-files.com/692fd4f000a6f446ca91cb33/693d31e1b2903bec1d471c55_1de587ca0db28625fe95e1d73eb604d3_check-circle.svg" /></div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-one one">
+          <div class="pricing-compare-text">Support response time</div>
+          <div class="text-center">24 hours</div>
+          <div class="text-center">12 hours</div>
+          <div class="text-center">4 hours SLA</div>
+        </div>
+        <div class="w-layout-grid grid-pricing-item-two">
+          <div class="pricing-compare-text">Contract</div>
+          <div class="text-center">Monthly</div>
+          <div class="text-center">Monthly</div>
+          <div class="text-center">Annual</div>
+        </div>
+      </div>
+    </div>
+  </section>
   <section class="faqs-section section-spacing-bottom">
     <div class="inner-container">
       <div class="faqs-center-title">
