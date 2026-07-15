@@ -1,6 +1,6 @@
 // Shared site footer - EDIT THE HTML BETWEEN THE BACKTICKS BELOW.
 // This file is loaded by every page; changes here appear site-wide.
-document.write(`<!-- Shared site footer — edit once here, loaded on every page by js/include.js -->
+document.currentScript.insertAdjacentHTML('beforebegin', `<!-- Shared site footer — edit once here, loaded on every page by js/include.js -->
 <style>
   .footer-bottom-bar {
     max-width: 1300px;
@@ -430,7 +430,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 // Floating WhatsApp button (site-wide)
-document.write(`
+document.currentScript.insertAdjacentHTML('beforebegin', `
 <style>
   .whatsapp-float {
     position: fixed;
@@ -476,7 +476,7 @@ document.write(`
   else fill();
 
   // no text selection or image dragging (form fields stay usable)
-  document.write('<style>body{-webkit-user-select:none;-moz-user-select:none;user-select:none}input,textarea,select{-webkit-user-select:text;-moz-user-select:text;user-select:text}img{-webkit-user-drag:none;user-drag:none}</style>');
+  document.currentScript.insertAdjacentHTML('beforebegin', '<style>body{-webkit-user-select:none;-moz-user-select:none;user-select:none}input,textarea,select{-webkit-user-select:text;-moz-user-select:text;user-select:text}img{-webkit-user-drag:none;user-drag:none}</style>');
 
   // no right-click
   document.addEventListener("contextmenu", function (e) { e.preventDefault(); });

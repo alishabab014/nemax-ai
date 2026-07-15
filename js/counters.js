@@ -1,3 +1,4 @@
+if (window.gsap && window.ScrollTrigger) { gsap.registerPlugin(ScrollTrigger); }
 (function () {
   function formatNumber(value, decimals) {
     decimals = decimals === undefined ? 0 : decimals;
