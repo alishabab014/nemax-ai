@@ -98,9 +98,9 @@ document.currentScript.insertAdjacentHTML('beforebegin', `<style>
           </a><a aria-label="Let's talk" class="nav-right-item w-inline-block"
             data-w-id="a7aaeaed-6063-800b-7fef-f4177899d80a" href="https://calendly.com/nemaxaiofficial/30min">
             <div class="nav-right-wrap"><img alt="Calendar icon" class="nav-right-image" loading="lazy"
-                src="assets/icons/letUS1DJO1ou.png" /><img
+                src="assets/icons/letUS1DJO1ou.webp" /><img
                 alt="Calendar icon" class="nav-right-hover" loading="lazy"
-                src="assets/icons/letUS1DJO1ou.png" />
+                src="assets/icons/letUS1DJO1ou.webp" />
             </div>
           </a>
           <div class="menu-button w-nav-button">
