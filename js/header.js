@@ -68,7 +68,7 @@ document.write(`<style>
     <div class="w-layout-grid grid-nav">
       <div class="navbar-left" id="w-node-dd71c13d-d886-0748-770b-251bd9cafd66-18a8ef3c">
         <div class="navbar-left-wrap"><a class="brand w-nav-brand" href="index.html"><img alt="Nemax AI Logo"
-              class="logo" loading="lazy" src="assets/Nemax AI Logo Main.png" /></a>
+              class="logo" loading="lazy" src="assets/Nemax AI Logo Main.webp" /></a>
         </div>
       </div>
       <div class="navbar-gap"></div>
