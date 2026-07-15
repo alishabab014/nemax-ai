@@ -91,9 +91,9 @@ document.currentScript.insertAdjacentHTML('beforebegin', `<style>
         <div class="navbar-right-wrap"><a aria-label="Email" class="nav-right-item w-inline-block"
             data-w-id="4c822d0e-90f6-ba53-b06e-7d295892bf2b" href="#" data-js-em="1">
             <div class="nav-right-wrap"><img alt="Email icon" class="nav-right-image" loading="lazy"
-                src="assets/icons/xLIkjgcmFOsC.png" /><img alt="Email icon"
+                src="assets/icons/xLIkjgcmFOsC.webp" /><img alt="Email icon"
                 class="nav-right-hover" loading="lazy"
-                src="assets/icons/xLIkjgcmFOsC.png" />
+                src="assets/icons/xLIkjgcmFOsC.webp" />
             </div>
           </a><a aria-label="Let's talk" class="nav-right-item w-inline-block"
             data-w-id="a7aaeaed-6063-800b-7fef-f4177899d80a" href="https://calendly.com/nemaxaiofficial/30min">
