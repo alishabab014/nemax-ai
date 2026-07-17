@@ -4448,7 +4448,7 @@ figcaption {
 }
 
 .social-marquee-item.six {
-    background-image: none
+    background-image: url(../assets/647fb85c69e95444243ef9bd_Henley\'s\ Gentlemen\'s\ Grooming\ -\ Barbershop\ and\ Mens\ Grooming.webp)
 }
 
 .social-top {
@@ -5540,7 +5540,7 @@ figcaption {
     grid-row-gap: var(--gap--gap-15);
     border-radius: var(--border-radius--md);
     background-color: var(--color--black);
-    background-image: linear-gradient(#13151566, #13151566), url("../assets/Hero.png");
+    background-image: linear-gradient(#13151566, #13151566), url("../assets/Hero.webp");
     background-position: 0 0, 50%;
     background-repeat: repeat, no-repeat;
     background-size: auto, cover;
@@ -9850,7 +9850,7 @@ figcaption {
     .feature-three {
         grid-column-gap: var(--gap--gap-6);
         grid-row-gap: var(--gap--gap-6);
-        background-image: linear-gradient(#0000, #0000), url("../assets/Hero.png");
+        background-image: linear-gradient(#0000, #0000), url("../assets/Hero.webp");
         background-position: 0 0, 100% 100%;
         padding: .9375rem
     }
