@@ -1,7 +1,5 @@
-// Shared site footer - EDIT THE HTML BETWEEN THE BACKTICKS BELOW.
-// This file is loaded by every page; changes here appear site-wide.
-document.currentScript.insertAdjacentHTML('beforebegin', `<!-- Shared site footer — edit once here, loaded on every page by js/include.js -->
-<style>
+// shared footer, loaded on every page
+document.currentScript.insertAdjacentHTML('beforebegin', `<style>
   .footer-bottom-bar {
     max-width: 1300px;
     margin: 0 auto;
@@ -380,8 +378,8 @@ document.currentScript.insertAdjacentHTML('beforebegin', `<!-- Shared site foote
         knowledge base as your business evolves. By using Nemax AI, you agree to our Terms of Use and Privacy
         Policy.</p>
       <div class="footer-badges" aria-label="Compliance badges">
-        <img src="https://obsidianos.com/_astro/badge-gdpr.BEZxU5Ip_2lfXMF.svg" alt="GDPR compliant badge">
-        <img src="https://obsidianos.com/_astro/badge-data-privacy.BASqwg5I_2lfXMF.svg" alt="Data privacy badge">
+        <img src="assets/badge-gdpr.BEZxU5Ip_2lfXMF.svg" alt="GDPR compliant badge">
+        <img src="assets/badge-pentesting.svg" alt="Data privacy badge">
       </div>
     </div>
     <div class="footer-links-col">
